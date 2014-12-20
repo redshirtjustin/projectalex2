@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  story_id: 
+  atom_id: 
+  active: false
+
+two:
+  story_id: 
+  atom_id: 
+  active: false
