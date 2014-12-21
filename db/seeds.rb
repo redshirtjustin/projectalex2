@@ -24,7 +24,7 @@ sec6 = Section.create!(name: 'Arts & Entertainment')
 
   rand_sec_num = SecureRandom.random_number(6) + 1
 
-  story = Story.create(subject: "Story ##{s} Subject", mast_url: "image1.jpg", thumb_url: "image1_thb.jpg", section_id: rand_sec_num)
+  story = Story.create(subject: "#{Section.find(rand_sec_num).name}, Story ##{s}", mast_url: "image1.jpg", thumb_url: "image1_thb.jpg", section_id: rand_sec_num)
 
 end
 

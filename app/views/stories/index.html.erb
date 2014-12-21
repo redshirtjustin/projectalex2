@@ -1,0 +1,25 @@
+<h1>Listing stories</h1>
+
+<div id='overview'>
+  Insert Statistical View Here
+</div>
+
+<br>
+
+<% @latest_stories_by_sections.each do |key, section| %>
+
+  <div class='section_pane'>
+  <%= "#{key} latest #{section.count} stories" %>
+
+      <% section.each do |story|  %>
+      <div class='story_subject'>
+      <span class='story_details atom_count'><%= "#{story.atoms.count}" %></span>
+      <span ><%= link_to story.subject, story_path(story) %></span>
+      <span class='story_details story_age'><%= "#{distance_of_time_in_words_to_now(story.created_at)} old" %></span>
+      <span class='story_details update_age'><%= "updated #{distance_of_time_in_words_to_now(story.updated_at)} ago" %></span>
+      </div>
+      <% end -%>
+
+  </div>
+
+<% end -%>

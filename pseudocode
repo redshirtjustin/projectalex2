@@ -1,0 +1,8 @@
+display the latest 15 stories in each section
+each story will also display next to it age, last updated age, and total atoms attached to it
+
+
+cycle through the sections (until all sections have been through, use .count)
+store the latest 15 stories of each section into an 2d array
+display each individual section, with corresponding stories
+

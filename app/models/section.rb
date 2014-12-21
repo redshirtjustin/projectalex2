@@ -1,3 +1,3 @@
 class Section < ActiveRecord::Base
-  has_many :sections
+  has_many :stories
 end
