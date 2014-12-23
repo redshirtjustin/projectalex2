@@ -1,16 +1,5 @@
-Create New Headline for Story <%= params[:story_id] %>
-<%= form_for(@headline) do |f| %>
-  <% if @headline.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@headline.errors.count, "error") %> prohibited this headline from being saved:</h2>
-
-      <ul>
-      <% @headline.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_for @headline, url: story_headlines_path(@headline, story_id: params[:story_id]) do |f| %>
+  <%= f.label :story_id, "Create headline for Story #{params[:story_id]}." %>
 
   <%= f.label :headline, "headline:" %>
   <%= f.text_field :headline %>

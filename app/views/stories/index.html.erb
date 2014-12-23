@@ -1,31 +1,27 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing stories</h1>
+<h1>Listing Stories</h1>
 
 <div id='overview'>
-  Insert Statistical View Here <br>
   <%= "Total number of stories: #{@stories_overview[:total_stories]}" %>
 </div>
 
-<br>
-<hr>
-<%= link_to "Create a new story.", new_story_path %>
-<hr>
+<div id='nav'>
+  <%= link_to "Create a New Story", new_story_path, class: 'btn new' %>
+</div>
+
+<div id='main'>
 
 <% @latest_stories_by_sections.each do |key, section| %>
-
   <div class='section_pane'>
   <%= "#{key} latest #{section.count} stories" %>
-
       <% section.each do |story|  %>
       <div class='story_subject'>
-      <span class='story_details atom_count'><%= "#{story.atoms.count}" %></span>
-      <span ><%= link_to story.subject, story_path(story) %></span>
-      <span class='story_details story_age'><%= "#{distance_of_time_in_words_to_now(story.created_at)} old" %></span>
-      <span class='story_details update_age'><%= "updated #{distance_of_time_in_words_to_now(story.updated_at)} ago" %></span>
+        <span class='story_details atom_count'><%= "#{story.atoms.count}" %></span>
+        <span ><%= link_to story.subject, story_path(story) %></span>
+        <span class='story_details story_age'><%= "#{distance_of_time_in_words_to_now(story.created_at)} old" %></span>
+        <span class='story_details update_age'><%= "updated #{distance_of_time_in_words_to_now(story.updated_at)} ago" %></span>
       </div>
-      <% end -%>
-
+  <% end -%>
   </div>
-
 <% end -%>
+
+</div>

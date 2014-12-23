@@ -24,15 +24,13 @@ class HeadlinesController < ApplicationController
   # POST /headlines
   # POST /headlines.json
   def create
-    @headline = Headline.new(headline_params)
+    @headline = Headline.new(headline: headline_params[:headline], story_id: params[:story_id])
 
     respond_to do |format|
       if @headline.save
-        format.html { redirect_to @headline, notice: 'Headline was successfully created.' }
-        format.json { render :show, status: :created, location: @headline }
+        format.html { redirect_to story_path(params[:story_id]), notice: 'Headline was successfully created.' }
       else
         format.html { render :new }
-        format.json { render json: @headline.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -43,10 +41,8 @@ class HeadlinesController < ApplicationController
     respond_to do |format|
       if @headline.update(headline_params)
         format.html { redirect_to @headline, notice: 'Headline was successfully updated.' }
-        format.json { render :show, status: :ok, location: @headline }
       else
         format.html { render :edit }
-        format.json { render json: @headline.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -56,8 +52,15 @@ class HeadlinesController < ApplicationController
   def destroy
     @headline.destroy
     respond_to do |format|
-      format.html { redirect_to headlines_url, notice: 'Headline was successfully destroyed.' }
+      format.html { redirect_to story_path(params[:story_id]), notice: 'Headline was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  # GET stories/:story_id/headlines/:id
+  def active_headline
+    respond_to do |format|
+      format.html { redirect_to story_path(params[:story_id]), notice: 'Active Headline action was tripped. And redirected to story #{params[:story_id]}' }
     end
   end
 
@@ -69,6 +72,7 @@ class HeadlinesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def headline_params
-      params[:headline].permit(:headline, :story_id)
+      params[:headline]
     end
+
 end

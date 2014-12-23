@@ -11,17 +11,22 @@
     </div>
   <% end %>
 
-  <%= f.label :subject, "subject:"%>
-  <%= f.text_field :subject %><br>
+  <p><%= f.label :subject, "subject:"%>
+  <%= f.text_field :subject %></p>
 
-  <%= f.label :mast_url, "mast_url:"%>
-  <%= f.text_field :mast_url %><br>
+  <br>
 
-  <%= f.label :thumb_url, "thumb_url:"%>
-  <%= f.text_field :thumb_url %><br>
+  <p><%= f.label :mast_url, "mast_url:"%>
+  <%= f.text_field :mast_url %></p>
+  <br>
 
-  <%= f.label :section_id, "section:"%>
-  <%= f.select :section_id, Section.all.collect { |s| [ s.name, s.id ] }, include_blank: false  %>
+<p><%= f.label :thumb_url, "thumb_url:"%>
+  <%= f.text_field :thumb_url %></p>
+  <br>
+
+<p><%= f.label :section_id, "section:"%>
+  <%= f.select :section_id, Section.all.collect { |s| [ s.name, s.id ] }, include_blank: false  %></p>
+  
 
 
   <div class="actions">

@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
   resources :stories do
     resources :headlines
-    resources :leadlines
   end
 
   root 'stories#index'
+
+  get 'stories/:story_id/headlines/:id' => 'headlines#active_headline', as: :active_headline
+  
+ # get 'stories/:story_id/headlines' => 'headlines#new', as: :headline
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

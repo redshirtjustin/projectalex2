@@ -2,19 +2,23 @@
 
 <h1><%= "Story #" + @story.id.to_s + ": " + @story.subject %></h1>
 
+<div id='overview'>
 <p><%= image_tag(@story.mast_url) %></p>
 <p>created: <%= @story.created_at  %></p>
 <p>last updated: <%= @story.updated_at %></p>
 <p>total atoms attached: <%= @story.atoms.count %></p>
+</div>
 
-<hr>
+<div id='nav'>
 <p>
   Timeline | Related Stories | Content Order | Story Details |---| <%= link_to 'Stories List', stories_path %> | <%= link_to 'Edit this story', edit_story_path(@story) %>
 </p>
-<hr>
+</div>
+
+<div id='main'>
 <p><strong>Headlines</strong></p>
 <% @story.headlines.each do |headline| %>
-<p><%= headline.headline %></p>
+<p><%= headline.headline %> (<%= link_to 'Delete', story_headline_path(@story, headline.id), method: :delete %>)(<%= link_to 'Activate', active_headline_path(@story, headline.id), method: :get %>)</p>
 <% end -%>
 <p><%= link_to 'Create New Headline', new_story_headline_path(@story) %></p>
 <p><strong>Leadlines</strong></p>
@@ -59,5 +63,6 @@
 
   </div>
 <% end -%>
+</div>
 
 </div>

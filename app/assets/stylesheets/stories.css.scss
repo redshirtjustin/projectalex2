@@ -5,6 +5,40 @@
 @import url(http://fonts.googleapis.com/css?family=Merriweather);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans);
 
+#overview {
+	width:"100%";
+
+	margin: 2px;
+	border: 1px solid grey;
+	padding: 7px;
+	border-radius: 0px;
+
+	background: whitesmoke;
+}
+
+#nav {
+	width:"100%";
+
+	margin: 10px;
+	border: 1px solid grey;
+	padding: 7px;
+	border-radius: 0px;
+
+	background: whitesmoke;
+}
+
+#main {
+	width:"100%";
+
+	margin: 2px;
+	border: 1px solid grey;
+	padding: 7px;
+	border-radius: 0px;
+
+	background: whitesmoke;
+}
+
+
 .section_pane {
 	width:45%;
 	min-height: 400px;
@@ -56,17 +90,7 @@
 	}
 }
 
-#overview {
-	width:"100%";
-	min-height: 100px;
 
-	margin: 2px;
-	border: 1px solid grey;
-	padding: 7px;
-	border-radius: 0px;
-
-	background: whitesmoke;
-}
 
 #timeline {
 	margin-right: auto;
@@ -109,11 +133,13 @@
 }
 
 .image_content{
-	img {
+	
+}
+
+img {
 		border: 1px solid black;
 		margin: 18px;
 	}
-}
 
 .text_content{
 	margin: 10px;
@@ -130,5 +156,22 @@
 	&.small {
 		font-size: 0.7;
 		font-weight: normal;
+	}
+}
+
+.btn {
+	&.new {
+		font-size: 1.1em;
+		font-family: 'Open sans', sans-serif;
+		font-weight: bold;
+
+		padding: 1px 4px 2px;
+		border-style: solid; 
+		border-width: 1px; 
+		border-radius: 6px;
+		border-color: blue;
+
+		background-color: lightblue;
+
 	}
 }
