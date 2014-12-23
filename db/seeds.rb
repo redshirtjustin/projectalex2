@@ -33,14 +33,14 @@ end
 1.upto(total_atoms) do |a|
 
   rand_atom_type = SecureRandom.random_number(100) + 1
-  lorem_length = SecureRandom.random_number(10) + 1
+  lorem_length = SecureRandom.random_number(10) + 4
 
   if rand_atom_type <= 60 
   	# Make a content atom
-  	atom = Atom.create(topic: "Topic ##{a}", content: Faker::Lorem.paragraph(1, false, lorem_length))
+  	atom = Atom.create(topic: "Topic ##{a}, #{Faker::Lorem.sentence(3)}", content: Faker::Lorem.paragraph(1, false, lorem_length))
   elsif rand_atom_type <= 80 
   	# Make an image atom
-  	atom = Atom.create(topic: "Topic ##{a}", content: Faker::Lorem.paragraph(1, false, lorem_length), img_url: "image1.jpg", img_caption: "Some image caption.", img_citation: "Reuters", img_location: "Venus" )
+  	atom = Atom.create(topic: "Topic ##{a}", content: Faker::Lorem.paragraph(1, false, lorem_length), img_url: "image1.jpg", img_caption: "Some image caption.", img_citation: "Reuters", img_location: Faker::Address::city )
   else 
   	# Make a quote atom
   	atom = Atom.create(topic: "Topic ##{a}", content: Faker::Lorem.paragraph(1, false, lorem_length), quote: Faker::Lorem.paragraph(1, false, lorem_length), quoted_name: Faker::Name.name, quoted_title: Faker::Name.title, quoted_org: Faker::Company.name)

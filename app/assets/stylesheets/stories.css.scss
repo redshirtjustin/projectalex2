@@ -2,20 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import url(http://fonts.googleapis.com/css?family=Merriweather);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+
 .section_pane {
 	width:45%;
 	min-height: 400px;
 
 	float: left;
-  	display: inline-block;
+	display: inline-block;
 
 	margin: 15px;
 	border: 1px solid grey;
 	padding: 7px;
-  	border-radius: 0px;
+	border-radius: 0px;
 
-  	background: whitesmoke;
- }
+	background: whitesmoke;
+}
 
 .story_subject {
 	width: 100%;
@@ -30,27 +33,27 @@
 	border-width: 1px; 
 	border-radius: 6px;
 
-		&.story_age {
-			float: right;
-			background: white; 
-			color: black; 
-			border-color: black;
-		}
+	&.story_age {
+		float: right;
+		background: white; 
+		color: black; 
+		border-color: black;
+	}
 
-		&.update_age {
-			float: right;
-			background: white; 
-			color: black; 
-			border-color: black;
-			margin-right: 2px
-		}
+	&.update_age {
+		float: right;
+		background: white; 
+		color: black; 
+		border-color: black;
+		margin-right: 2px
+	}
 
-		&.atom_count {
-			background: white; 
-			color: black; 
-			border-color: black;
-			
-		}
+	&.atom_count {
+		background: white; 
+		color: black; 
+		border-color: black;
+
+	}
 }
 
 #overview {
@@ -60,7 +63,72 @@
 	margin: 2px;
 	border: 1px solid grey;
 	padding: 7px;
-  	border-radius: 0px;
+	border-radius: 0px;
 
-  	background: whitesmoke;
+	background: whitesmoke;
+}
+
+#timeline {
+	margin-right: auto;
+	margin-left: auto;
+	width: 75%;
+	background-color: whitesmoke;
+	padding: 10px;
+}
+
+.atom_pane {
+	margin-right: auto;
+	margin-left: auto;
+	width: 85%;
+	border-top: 1px solid silver;
+	padding: 15px;
+}
+
+.topic {
+	margin: 10px;
+	font-size: 1.5em;
+	font-family: 'Open sans', sans-serif;
+	font-weight: bold;
+	text-align: center;
+}
+
+.date_added {
+	margin: 2px;
+	font-size: 0.9em;
+	font-family: 'Merriweather', serif;
+	font-style: italic;
+	text-align: center;
+}
+
+.quote_content {
+	margin:18px;
+	font-size: 1.2em;
+	font-family: 'Merriweather', serif;
+	font-style: italic;
+	text-align: left;
+}
+
+.image_content{
+	img {
+		border: 1px solid black;
+		margin: 18px;
+	}
+}
+
+.text_content{
+	margin: 10px;
+	font-size: 1.2em;
+	font-family: 'Merriweather', serif;
+	text-align: left;
+}
+
+.details {
+	font-size: 0.9em;
+	font-family: 'Open sans', sans-serif;
+	font-weight: bold;
+
+	&.small {
+		font-size: 0.7;
+		font-weight: normal;
+	}
 }

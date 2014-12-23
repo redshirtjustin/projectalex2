@@ -1,4 +1,53 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_story_path(@story) %> |
-<%= link_to 'Back', stories_path %>
+<h1><%= "Story #" + @story.id.to_s + ": " + @story.subject %></h1>
+
+<p><%= image_tag(@story.mast_url) %></p>
+<p>created: <%= @story.created_at  %></p>
+<p>last updated: <%= @story.updated_at %></p>
+<p>total atoms attached: <%= @story.atoms.count %></p>
+
+<hr>
+<p>
+  Timeline | Related Stories | Content Order | Story Details |---| <%= link_to 'Stories List', stories_path %> | <%= link_to 'Edit this story', edit_story_path(@story) %>
+</p>
+<hr>
+<br>
+
+<div id='timeline'>
+<center><h2>Story Timeline</h2></center>
+
+<% @story.atoms.order('chains.created_at DESC').each do |atom| %>
+  <div class='atom_pane'>
+
+    <div class='topic'><%= atom.topic %></div>
+	<div class='date_added'><%= "added: #{time_ago_in_words(atom.chains.where(story_id: @story.id).first.created_at)} ago" %></div>
+
+	<% if !atom.quote.blank? then  %>
+	  <div>
+		  <span class='details'><%= !atom.quoted_name.blank? ? atom.quoted_name : nil %>, </span>
+		  <span class='details'><%= !atom.quoted_title.blank? ? atom.quoted_title : nil %> </span>
+		  <span class='details small'> from </span>
+		  <span class='details'><%= !atom.quoted_org.blank? ? atom.quoted_org : nil %></span>
+		  <span class='details small'> says...</span><br>
+		  <div class='quote_content'>"<%= !atom.quote.blank? ? atom.quote : nil %>"</div>
+	  </div>
+	<% end -%>
+
+	<% if !atom.img_url.blank? then  %>
+	  <div class='image_content'><%= !atom.img_url.blank? ? image_tag(atom.img_url) : nil %><br>	
+	  	  <span class='details small'>caption: </span>	
+		  <span class='details'><%= !atom.img_caption.blank? ? atom.img_caption : nil %></span><br>
+		  <span class='details small'>location: </span>
+		  <span class='details'><%= !atom.img_location.blank? ? atom.img_location : nil %></span>
+	  </div>
+	<% end -%>
+
+	<% if !atom.content.blank? then  %>
+		<div class='text_content'><%= !atom.content.blank? ? atom.content : nil %></div>
+	<% end -%>
+
+  </div>
+<% end -%>
+
+</div>

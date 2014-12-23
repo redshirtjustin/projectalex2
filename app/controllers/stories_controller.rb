@@ -4,10 +4,15 @@ class StoriesController < ApplicationController
   # GET /stories
   # GET /stories.json
   def index
-    all_sections = Section.all
-    @latest_stories_by_sections = {}
-    latest = 15
+    # Create some instance variables to display
+    @stories_overview = {} # Will have statistical overview data
+    @latest_stories_by_sections = {} # Will hold object relations type of each section
 
+    latest = 15 # Display this many stories under each section
+    all_sections = Section.all
+    @stories_overview[:total_stories] = Story.count
+
+    # Logic for the index view
     all_sections.each do |s|
      @latest_stories_by_sections[s.name] = s.stories.order('updated_at DESC').limit(latest)
     end
@@ -16,6 +21,7 @@ class StoriesController < ApplicationController
   # GET /stories/1
   # GET /stories/1.json
   def show
+    # Runs before_action callback 
   end
 
   # GET /stories/new
