@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :stories
+  resources :stories do
+    resources :headlines
+    resources :leadlines
+  end
 
   root 'stories#index'
 

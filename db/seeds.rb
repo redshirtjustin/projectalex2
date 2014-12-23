@@ -5,12 +5,17 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+Atom.delete_all
+Chain.delete_all
+Citation.delete_all
+Headline.delete_all
+Leadline.delete_all
+Section.delete_all
 
 total_stories = 50
 total_atoms = 250
 
 # Seed the sections table
-Section.delete_all
 sec1 = Section.create!(name: 'Business & Economics')
 sec2 = Section.create!(name: 'Government & Politics')
 sec3 = Section.create!(name: 'Sports')
@@ -19,7 +24,6 @@ sec5 = Section.create!(name: 'Environment')
 sec6 = Section.create!(name: 'Arts & Entertainment')
 
 # mass populate Stories through iteration
-
 1.upto(total_stories) do |s|
 
   rand_sec_num = SecureRandom.random_number(6) + 1
@@ -65,10 +69,24 @@ end
   end
 end
 
-# loop through all Stories
-# get a random number of story assocations from 1..8
-# loop through the number of assocations
-# get a random atom_id
-# if the atom_id hasn't been choosen add it to a list
-# if it has then loop and get a new atom_id
-# chain that story to the atom_id
+# seed headlines and leadlines
+1.upto(total_stories) do |s|
+  rand_num_headlines = SecureRandom.random_number(3) + 1
+  rand_num_leadlines = SecureRandom.random_number(2) + 1
+
+  1.upto(rand_num_headlines) do |hl|
+    headline = Headline.create(headline: Faker::Lorem.sentence(10), story_id: s)
+  end
+
+  1.upto(rand_num_leadlines) do |ll|
+    leadline = Leadline.create(leadline: Faker::Lorem.sentence(10), story_id: s)
+  end
+end
+
+# seed citations
+1.upto(total_atoms) do |atom|
+  rand_num_citations = SecureRandom.random_number(3) + 1
+  1.upto(rand_num_citations) do |cit|
+    citation = Citation.create(title: Faker::Lorem::sentence(10), url: Faker::Internet::url, atom_id: atom)
+  end
+end

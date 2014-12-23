@@ -11,6 +11,19 @@
     </div>
   <% end %>
 
+  <%= f.label :subject, "subject:"%>
+  <%= f.text_field :subject %><br>
+
+  <%= f.label :mast_url, "mast_url:"%>
+  <%= f.text_field :mast_url %><br>
+
+  <%= f.label :thumb_url, "thumb_url:"%>
+  <%= f.text_field :thumb_url %><br>
+
+  <%= f.label :section_id, "section:"%>
+  <%= f.select :section_id, Section.all.collect { |s| [ s.name, s.id ] }, include_blank: false  %>
+
+
   <div class="actions">
     <%= f.submit %>
   </div>

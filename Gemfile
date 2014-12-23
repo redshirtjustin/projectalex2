@@ -40,6 +40,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
 gem 'acts-as-taggable-on', '~> 3.4'
 
-# gem 'acts_as_list', '~> 0.5.0'
+gem 'acts_as_list', '~> 0.5.0'
 
 gem 'faker', '~> 1.4.3'

@@ -6,6 +6,6 @@ class Story < ActiveRecord::Base
 
   belongs_to :section
 
-  has_many :chains
+  has_many :chains, -> { order("position ASC") }
   has_many :atoms, through: :chains
 end

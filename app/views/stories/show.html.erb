@@ -12,6 +12,16 @@
   Timeline | Related Stories | Content Order | Story Details |---| <%= link_to 'Stories List', stories_path %> | <%= link_to 'Edit this story', edit_story_path(@story) %>
 </p>
 <hr>
+<p><strong>Headlines</strong></p>
+<% @story.headlines.each do |headline| %>
+<p><%= headline.headline %></p>
+<% end -%>
+<p><%= link_to 'Create New Headline', new_story_headline_path(@story) %></p>
+<p><strong>Leadlines</strong></p>
+<% @story.leadlines.each do |leadline| %>
+<p><%= leadline.leadline %></p>
+<% end -%>
+
 <br>
 
 <div id='timeline'>
